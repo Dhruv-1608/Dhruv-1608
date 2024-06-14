@@ -25,4 +25,3 @@
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=dhruv-1608&show_icons=true&locale=en" alt="dhruv-1608" /></p>
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=dhruv-1608&" alt="dhruv-1608" /></p>
-<script src="https://tryhackme.com/badge/3188720"></script>
