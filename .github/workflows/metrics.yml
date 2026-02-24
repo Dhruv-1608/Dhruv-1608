@@ -27,7 +27,7 @@ jobs:
       - name: Generate metrics
         uses: lowlighter/metrics@latest
         with:
-          token: ${{ secrets.METRICS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           user: Dhruv-1608
           template: terminal
           config_timezone: Asia/Kolkata
