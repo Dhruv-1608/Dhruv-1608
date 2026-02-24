@@ -4,13 +4,14 @@
 name: Metrics
 
 on:
+  workflow_dispatch:
   schedule:
     # Run every day at midnight
     - cron: '0 0 * * *'
-  workflow_dispatch:
   push:
     branches:
       - main
+      - test-metrics
     paths:
       - '.github/workflows/metrics.yml'
 
@@ -65,10 +66,6 @@ jobs:
             - reviews
             - stargazers
             - participants
-
-          # Exclude some repos if needed
-          # repositories_exclude: |
-          #   - repo-to-exclude
 
       - name: Commit metrics
         uses: stefanzweifel/git-auto-commit-action@v4
