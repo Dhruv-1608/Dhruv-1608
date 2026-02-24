@@ -1,0 +1,77 @@
+# GitHub Actions Workflow for Metrics
+# This will generate beautiful Metrics like lowlighter/metrics
+
+name: Metrics
+
+on:
+  schedule:
+    # Run every day at midnight
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/metrics.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        
+      - name: Generate metrics
+        uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: Dhruv-1608
+          template: terminal
+          config_timezone: Asia/Kolkata
+          
+          # Base
+          base: header, repositories, stars, follows, about
+          
+          # Languages
+          languages: true
+          languages_colors: github
+          languages_threshold: 1
+          
+          # Commits
+          commits: true
+          commits_detail: true
+          commits_limit: 52
+          
+          # Lines
+          lines: true
+          lines_colored: true
+          
+          # Stars & Follows
+          stars: true
+          follows: true
+          
+          # Isometric calendar
+          isocalendar: true
+          isocalendar_duration: full-year
+          
+          # Plugins
+          plugins: |
+            - contributions
+            - followup
+            - issues
+            - prs
+            - reviews
+            - stargazers
+            - participants
+
+          # Exclude some repos if needed
+          # repositories_exclude: |
+          #   - repo-to-exclude
+
+      - name: Commit metrics
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "📊 Update metrics"
+          file_pattern: "*.svg metrics.svg"
