@@ -32,7 +32,7 @@ jobs:
           template: terminal
           config_timezone: Asia/Kolkata
           
-          # Base
+          # Base - Header with user info
           base: header, repositories, stars, follows, about
           
           # Languages
@@ -57,7 +57,7 @@ jobs:
           isocalendar: true
           isocalendar_duration: full-year
           
-          # Plugins
+          # Plugins - All the features you wanted
           plugins: |
             - contributions
             - followup
@@ -66,6 +66,32 @@ jobs:
             - reviews
             - stargazers
             - participants
+            - leetcode
+            - topics
+          
+          # LeetCode username
+          leetcode_username: dhruvgandhi_1621
+          
+          # Topics you like
+          topics: |
+            C++
+            C
+            Python
+            Docker
+            Linux
+            Arch
+            Neovim
+            Git
+            GitHub
+            JavaScript
+            HTML
+            CSS
+            MongoDB
+            SQL
+            Chess
+            Bitcoin
+            Unity
+            Godot
 
       - name: Commit metrics
         uses: stefanzweifel/git-auto-commit-action@v4
